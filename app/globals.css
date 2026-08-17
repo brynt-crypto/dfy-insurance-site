@@ -1,0 +1,394 @@
+@import "tailwindcss";
+
+/* ============================================================
+   DONE FOR YOU INSURANCE AGENCY  |  Design Tokens  |  v1.0
+   Navy + confident blue. Built for a 30-60+ audience:
+   large type, high contrast, generous spacing.
+   ============================================================ */
+
+@theme {
+  --color-navy-900: #0b1b33;
+  --color-navy: #12294d;
+  --color-navy-700: #1c3a68;
+  --color-blue: #1e6fd9;
+  --color-blue-bright: #3e90f0;
+  --color-blue-deep: #17559f;
+  --color-blue-tint: #eaf2fd;
+  --color-paper: #ffffff;
+  --color-paper-soft: #f6f8fb;
+  --color-ink: #1f2933;
+  --color-ink-muted: #55606e;
+  --color-gold: #e8a33d;
+  --color-hairline: #dde3ec;
+
+  --font-display: var(--font-sora), "Sora", system-ui, sans-serif;
+  --font-body: var(--font-inter), "Inter", system-ui, sans-serif;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+}
+
+:root {
+  --dfy-navy-900: #0b1b33;
+  --dfy-navy: #12294d;
+  --dfy-navy-700: #1c3a68;
+  --dfy-blue: #1e6fd9;
+  --dfy-blue-bright: #3e90f0;
+  --dfy-blue-deep: #17559f;
+  --dfy-blue-tint: #eaf2fd;
+  --dfy-paper: #ffffff;
+  --dfy-paper-soft: #f6f8fb;
+  --dfy-ink: #1f2933;
+  --dfy-ink-muted: #55606e;
+  --dfy-ink-on-navy: #e6edf7;
+  --dfy-ink-on-navy-muted: #a7b8d0;
+  --dfy-gold: #e8a33d;
+  --dfy-hairline: #dde3ec;
+  --dfy-hairline-navy: rgba(230, 237, 247, 0.16);
+
+  --dfy-font-display: var(--font-sora), "Sora", system-ui, sans-serif;
+  --dfy-font-body: var(--font-inter), "Inter", system-ui, sans-serif;
+
+  /* Type scale — nothing below 15px anywhere on the site */
+  --dfy-display-xl: clamp(2.5rem, 1.9rem + 3vw, 4.75rem);
+  --dfy-display-l: clamp(2rem, 1.6rem + 2vw, 3.5rem);
+  --dfy-h2: clamp(1.75rem, 1.4rem + 1.75vw, 3rem);
+  --dfy-h3: clamp(1.375rem, 1.28rem + 0.34vw, 1.625rem);
+  --dfy-body-l: clamp(1.1875rem, 1.09rem + 0.36vw, 1.375rem); /* 19px -> 22px */
+  --dfy-body: clamp(1.0625rem, 1rem + 0.26vw, 1.1875rem); /* 17px -> 19px */
+  --dfy-small: clamp(0.9375rem, 0.9rem + 0.16vw, 1.0625rem); /* 15px -> 17px */
+  --dfy-eyebrow: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem);
+
+  --dfy-track-display: -0.02em;
+  --dfy-track-eyebrow: 0.12em;
+  --dfy-leading-tight: 1.1;
+  --dfy-leading-body: 1.65;
+
+  --dfy-space-2: 8px;
+  --dfy-space-3: 12px;
+  --dfy-space-4: 16px;
+  --dfy-space-6: 24px;
+  --dfy-space-8: 32px;
+  --dfy-space-12: 48px;
+  --dfy-space-16: 64px;
+  --dfy-space-24: 96px;
+
+  --dfy-radius-sm: 8px;
+  --dfy-radius-md: 14px;
+  --dfy-radius-lg: 20px;
+  --dfy-radius-pill: 999px;
+
+  --dfy-shadow-card: 0 1px 2px rgba(11, 27, 51, 0.05),
+    0 10px 28px rgba(11, 27, 51, 0.07);
+  --dfy-shadow-lift: 0 2px 4px rgba(11, 27, 51, 0.06),
+    0 18px 44px rgba(11, 27, 51, 0.12);
+
+  --dfy-max-width: 1560px;
+  /* Fluid page gutter — grows with the viewport so wide screens breathe. */
+  --dfy-gutter: clamp(20px, 4vw, 64px);
+  --dfy-measure: 66ch;
+  --dfy-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --dfy-dur: 420ms;
+}
+
+/* ---------- base ----------
+   Everything below lives in Tailwind's cascade layers on purpose: base for
+   element defaults, components for our own classes. Without this, a rule like
+   `.dfy-btn { display: inline-flex }` outranks a `hidden` utility and the
+   button refuses to hide on mobile. */
+
+@layer base {
+  html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 96px;
+}
+
+body {
+  background: var(--dfy-paper);
+  color: var(--dfy-ink);
+  font-family: var(--dfy-font-body);
+  font-size: var(--dfy-body);
+  line-height: var(--dfy-leading-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--dfy-font-display);
+  color: var(--dfy-navy);
+  letter-spacing: var(--dfy-track-display);
+  line-height: var(--dfy-leading-tight);
+  font-weight: 700;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+a {
+  color: var(--dfy-blue-deep);
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  color: var(--dfy-blue);
+}
+
+:focus-visible {
+  outline: 3px solid var(--dfy-blue-bright);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+} /* end @layer base */
+
+/* ---------- layout primitives ---------- */
+
+@layer components {
+
+.dfy-wrap {
+  max-width: var(--dfy-max-width);
+  margin-inline: auto;
+  padding-inline: var(--dfy-gutter);
+}
+
+.dfy-measure {
+  max-width: var(--dfy-measure);
+}
+
+.dfy-band {
+  padding-block: clamp(64px, 7.5vw, 140px);
+}
+
+.dfy-band-soft {
+  background: var(--dfy-paper-soft);
+}
+
+.dfy-band-navy {
+  background: var(--dfy-navy);
+  color: var(--dfy-ink-on-navy);
+}
+
+.dfy-band-navy h1,
+.dfy-band-navy h2,
+.dfy-band-navy h3 {
+  color: #ffffff;
+}
+
+.dfy-eyebrow {
+  display: inline-block;
+  font-size: var(--dfy-eyebrow);
+  font-weight: 600;
+  letter-spacing: var(--dfy-track-eyebrow);
+  text-transform: uppercase;
+  color: var(--dfy-blue-deep);
+  margin-bottom: var(--dfy-space-3);
+}
+
+.dfy-band-navy .dfy-eyebrow {
+  color: var(--dfy-blue-bright);
+}
+
+.dfy-lead {
+  font-size: var(--dfy-body-l);
+  color: var(--dfy-ink-muted);
+}
+
+.dfy-band-navy .dfy-lead {
+  color: var(--dfy-ink-on-navy-muted);
+}
+
+/* ---------- scroll progress rail ---------- */
+
+.dfy-scrollrail {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 120;
+  height: 3px;
+  background: transparent;
+  pointer-events: none;
+}
+
+.dfy-scrollrail > i {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(
+    90deg,
+    var(--dfy-navy) 0%,
+    var(--dfy-blue) 55%,
+    var(--dfy-blue-bright) 100%
+  );
+  transition: width 90ms linear;
+}
+
+/* ---------- buttons ---------- */
+
+.dfy-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 52px; /* generous tap target */
+  padding: 15px 28px;
+  border: 1px solid transparent;
+  border-radius: var(--dfy-radius-sm);
+  font-family: var(--dfy-font-body);
+  font-size: var(--dfy-body);
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 200ms var(--dfy-ease), background-color 200ms var(--dfy-ease),
+    border-color 200ms var(--dfy-ease), box-shadow 200ms var(--dfy-ease),
+    color 200ms var(--dfy-ease);
+}
+
+.dfy-btn:hover {
+  transform: translateY(-2px);
+}
+
+.dfy-btn--primary {
+  background: var(--dfy-blue);
+  color: #ffffff;
+  box-shadow: 0 6px 18px rgba(30, 111, 217, 0.28);
+}
+
+.dfy-btn--primary:hover {
+  background: var(--dfy-blue-deep);
+  color: #ffffff;
+  box-shadow: 0 10px 26px rgba(30, 111, 217, 0.36);
+}
+
+.dfy-btn--outline {
+  background: transparent;
+  color: var(--dfy-navy);
+  border-color: var(--dfy-hairline);
+}
+
+.dfy-btn--outline:hover {
+  border-color: var(--dfy-blue);
+  color: var(--dfy-blue-deep);
+  background: var(--dfy-blue-tint);
+}
+
+.dfy-btn--on-navy {
+  background: transparent;
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.38);
+}
+
+.dfy-btn--on-navy:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+/* ---------- cards ---------- */
+
+.dfy-card {
+  background: var(--dfy-paper);
+  border: 1px solid var(--dfy-hairline);
+  border-radius: var(--dfy-radius-md);
+  padding: var(--dfy-space-8);
+  box-shadow: var(--dfy-shadow-card);
+  transition: transform var(--dfy-dur) var(--dfy-ease),
+    box-shadow var(--dfy-dur) var(--dfy-ease),
+    border-color var(--dfy-dur) var(--dfy-ease);
+}
+
+.dfy-card--interactive:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--dfy-shadow-lift);
+  border-color: rgba(30, 111, 217, 0.4);
+}
+
+/* ---------- forms ---------- */
+
+.dfy-label {
+  display: block;
+  font-size: var(--dfy-small);
+  font-weight: 600;
+  color: var(--dfy-navy);
+  margin-bottom: 6px;
+}
+
+.dfy-input {
+  width: 100%;
+  min-height: 52px;
+  padding: 14px 16px;
+  font-family: var(--dfy-font-body);
+  font-size: var(--dfy-body);
+  color: var(--dfy-ink);
+  background: var(--dfy-paper);
+  border: 1px solid var(--dfy-hairline);
+  border-radius: var(--dfy-radius-sm);
+  transition: border-color 180ms var(--dfy-ease), box-shadow 180ms var(--dfy-ease);
+}
+
+.dfy-input::placeholder {
+  color: #8b95a3;
+}
+
+.dfy-input:hover {
+  border-color: #c3cddc;
+}
+
+.dfy-input:focus {
+  outline: none;
+  border-color: var(--dfy-blue);
+  box-shadow: 0 0 0 3px rgba(62, 144, 240, 0.28);
+}
+
+/* Shadows are dropped in Windows high-contrast mode, so put the outline back
+   there — otherwise these fields would have no visible focus state at all. */
+@media (forced-colors: active) {
+  .dfy-input:focus {
+    outline: 3px solid;
+    outline-offset: 1px;
+  }
+}
+
+.dfy-input[aria-invalid="true"] {
+  border-color: #c0392b;
+}
+
+.dfy-input[aria-invalid="true"]:focus {
+  box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.24);
+}
+
+.dfy-error {
+  display: block;
+  margin-top: 6px;
+  font-size: var(--dfy-small);
+  font-weight: 500;
+  color: #a5281b;
+}
+
+} /* end @layer components */
+
+/* ---------- motion safety ----------
+   Deliberately unlayered so it outranks everything above it. */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .dfy-btn:hover,
+  .dfy-card--interactive:hover {
+    transform: none;
+  }
+}
